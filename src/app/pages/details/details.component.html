@@ -1,0 +1,163 @@
+<div class="details-wrapper">
+  <div class="header-wrapper">
+    <div class="navbar">
+      <div
+        class="logo-wrapper"
+        [routerLink]="['/']">
+        <img
+          src="../../../assets/icons/icons8-длинная-стрелка-влево-50.png"
+          alt="logo"
+          class="logo">
+        <div class="text-logo">
+          <div
+            [routerLink]="['/']"
+            class="">Головна
+          </div>
+        </div>
+      </div>
+      <div class="nav-wrapper">
+        <a class="nav-text">Бронювання</a>
+        <button class="nav-button">Додати заклад</button>
+      </div>
+    </div>
+  </div>
+  <div class="heading-wrapper">
+    <div class="heading">{{establishment?.name}}</div>
+    <div class="subheading">Кафе</div>
+  </div>
+</div>
+
+<div
+  *ngIf="!!establishment"
+  class="">
+  <div class="wrapper">
+    <div class="section-left">
+      <div class="description">
+        <div class="information-container">
+          <div class="text"><span>Тип закладу: </span>Кафе</div>
+          <div class="text"><span>Кухня: </span>Американська, Європейська, Мексиканська</div>
+          <div class="text"><span>Послуги: </span>Парковка, Доставка, Літня тераса</div>
+        </div>
+        <span class="name-restaurant">{{establishment.name}} - </span>
+        {{establishment.information}}
+      </div>
+      <div class="title-gallery">Фотографії</div>
+      <div class="gallery">
+        <img
+          class="image-top"
+          src="../../../assets/images_establishments/1_2.jpg">
+        <div>
+          <img
+            class="image"
+            src="../../../assets/images_establishments/1_3.jpg">
+          <img
+            class="image"
+            src="../../../assets/images_establishments/1_4.jpg">
+          <img
+            class="image"
+            src="../../../assets/images_establishments/1_5.jpg">
+        </div>
+      </div>
+    </div>
+    <div class="section-right">
+      <div class="maps">
+        <div class="inform-title">Карта:</div>
+                  <iframe
+                    [src]="establishment.establishmentMap | safe"
+                    width="400"
+                    height="250"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="phone-wrapper">
+        <div class="inform-title">
+          Контакти:
+        </div>
+        <div class="container">
+          <img
+            class="logo-phone"
+            src="../../../assets/icons/icons8-громкость-звонка-hand-drawn-32.png">
+          <a
+            class="decorated-link"
+            href="tel:+380733501150">+380 73 350 1150</a>
+        </div>
+      </div>
+      <div class="information">
+        <div class="inform-title">
+          Геолокація:
+        </div>
+        <div class="container">
+          <img
+            class="logo-address"
+            src="../../../assets/icons/icons8-геозона-50.png">
+          <a
+            class="decorated-link"
+            target="_blank"
+            href="{{establishment.address}}">{{establishment.addressTitle}}</a>
+        </div>
+      </div>
+      <div class="social-media">
+        <div class="inform-title">Соціальні мережі:</div>
+        <div>
+          <img
+            class="logo-social-media"
+            src="../../../assets/icons/icons8-instagram-hand-drawn-96.png"
+            alt="social network"/>
+          <img
+            class="logo-social-media"
+            src="../../../assets/icons/icons8-facebook-hand-drawn-96.png"
+            alt="social network"/>
+        </div>
+      </div>
+      <div class="inform-title">
+        Графік роботи:
+      </div>
+      <div class="schedule-wrapper">
+        <div class="schedule">
+          <img
+            class="logo-schedule"
+            src="../../../assets/icons/icons8-monday-cute-outline-32.png">
+          10:00 - 22:00
+        </div>
+        <div class="schedule">
+          <img
+            class="logo-schedule"
+            src="../../../assets/icons/icons8-tuesday-cute-outline-32.png">
+          10:00 - 22:00
+        </div>
+        <div class="schedule">
+          <img
+            class="logo-schedule"
+            src="../../../assets/icons/icons8-wednesday-cute-outline-32.png">
+          10:00 - 22:00
+        </div>
+        <div class="schedule">
+          <img
+            class="logo-schedule"
+            src="../../../assets/icons/icons8-thursday-32.png">
+          10:00 - 22:00
+        </div>
+        <div class="schedule">
+          <img
+            class="logo-schedule"
+            src="../../../assets/icons/icons8-friday-cute-outline-32.png">
+          10:00 - 22:00
+        </div>
+        <div class="schedule">
+          <img
+            class="logo-schedule"
+            src="../../../assets/icons/icons8-saturday-cute-outline-32.png">
+          10:00 - 22:00
+        </div>
+        <div class="schedule">
+          <img
+            class="logo-schedule"
+            src="../../../assets/icons/icons8-sunday-cute-outline-32.png">
+          10:00 - 22:00
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

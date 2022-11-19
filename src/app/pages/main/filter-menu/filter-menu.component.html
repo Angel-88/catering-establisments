@@ -1,0 +1,51 @@
+<div class="filter-menu">
+  <div class="wrapper-filter">
+    <div class="title">Тип закладу</div>
+    <section
+      class="section-filter"
+      *ngFor="let type of types">
+      <mat-checkbox
+        class="mat-checkbox"
+        color="primary">
+        {{type.name}}
+      </mat-checkbox>
+    </section>
+  </div>
+  <div class="wrapper-filter">
+    <div class="title">Кухня</div>
+    <section
+      class="section-filter"
+      *ngFor="let cuisine of cuisines">
+      <mat-checkbox
+        class="mat-checkbox"
+        color="primary">
+        {{cuisine.name}}
+      </mat-checkbox>
+    </section>
+  </div>
+  <div class="wrapper-filter">
+    <div class="title">Послуги</div>
+    <section
+      class="section-filter"
+      *ngFor="let service of services">
+      <mat-checkbox
+        class="mat-checkbox"
+        color="primary">
+        {{service.name}}
+      </mat-checkbox>
+    </section>
+  </div>
+<!--  <div class="wrapper-filter">-->
+<!--    <div class="title">Додатково</div>-->
+<!--    <section-->
+<!--      class="section-filter"-->
+<!--      *ngFor="let item of filters">-->
+<!--      <mat-checkbox-->
+<!--        class="mat-checkbox"-->
+<!--        color="primary">-->
+<!--        {{item.filter}}-->
+<!--      </mat-checkbox>-->
+<!--    </section>-->
+<!--  </div>-->
+</div>
+

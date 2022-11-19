@@ -1,0 +1,41 @@
+<div class="wrapper">
+  <mat-card
+    class="card"
+    *ngFor="let establishment of establishments">
+    <div class="card-title-wrapper">
+      <img
+        mat-card-lg-image
+        class="header-image"
+        src="image"
+        alt="Photo restaurant">
+      <div>
+        <mat-card-title-group class="card-title-group">
+          <mat-card-subtitle class="card-subtitle">type</mat-card-subtitle>
+          <mat-card-title
+            class="card-title">
+            {{establishment.name}}
+          </mat-card-title>
+        </mat-card-title-group>
+
+        <mat-card-content class="card-content">
+          <div class="card-content-line">
+            <img
+              class="logo-address"
+              src="../../assets/icons/icons8-часы-64.png"
+              alt="logo-address">schedule</div>
+          <div class="card-content-line"
+              >
+            <img
+              class="logo-address"
+              src="../../assets/icons/icons8-геозона-50.png"
+              alt="logo-address">{{establishment.addressTitle}}</div>
+        </mat-card-content>
+      </div>
+      <div class="button">
+        <a
+          [routerLink]="['/details', establishment.id]"
+          class="btn-open">Деталі</a>
+      </div>
+    </div>
+  </mat-card>
+</div>

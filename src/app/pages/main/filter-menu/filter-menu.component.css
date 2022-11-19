@@ -1,0 +1,36 @@
+.filter-menu {
+  width: 70%;
+  height: 80%;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  color: #6956E5;
+}
+
+.wrapper-filter {
+  margin-bottom: 25px;
+}
+
+.section-filter {
+  margin-bottom: 5px;
+}
+
+.mat-checkbox{
+  font-family: 'Manrope', sans-serif;
+}
+
+/*.decorated-link {*/
+/*  text-underline-offset: 4px;*/
+/*  color: inherit;*/
+/*  text-decoration-color: #6956E5;*/
+/*  text-decoration-thickness: 1px;*/
+/*  margin-bottom: 10px;*/
+/*  font-family: 'Manrope', sans-serif;*/
+/*  font-size: 18px;*/
+/*}*/

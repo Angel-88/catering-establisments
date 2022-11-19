@@ -1,0 +1,283 @@
+.details-wrapper {
+  width: 100%;
+  height: 700px;
+  margin-bottom: 50px;
+  background: url(../../../assets/images_establishments/1_1.jpg) center no-repeat;
+  background-size: cover;
+  position: relative;
+  box-shadow: 0 10px 14px 0 rgba(34, 60, 80, 0.3);
+}
+
+.details-wrapper:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0, 0.5);
+  z-index: 1;
+}
+
+.header-wrapper {
+  width: 100%;
+  height: 80px;
+  box-shadow: 0 10px 14px 0 rgba(34, 60, 80, 0.3);
+  align-items: center;
+  background-color: rgba(0,0,0, 0.3);
+  backdrop-filter: blur(3px);
+  position: absolute;
+  padding-top: 10px;
+  z-index: 2;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: 0 auto;
+  padding: 5px;
+  align-items: center;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  z-index: 3;
+}
+
+.logo {
+  height: 35px;
+  z-index: 2;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.text-logo {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  font-size: 24px;
+  font-family: 'Comfortaa', cursive;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.nav-text {
+  cursor: pointer;
+  margin-right: 35px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 24px;
+  font-family: 'Comfortaa', cursive;
+  z-index: 3;
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  margin-right: 10px;
+}
+
+.nav-button {
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  background: none;
+  text-align: center;
+  font-size: 26px;
+  padding: 10px 15px;
+  color: #fff;
+  font-family: 'Comfortaa', cursive;
+  z-index: 2;
+}
+
+.heading-wrapper {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  transform: translate(0, -50%);
+  z-index: 2;
+  flex-direction: column;
+}
+
+.heading {
+  color: #fff;
+  font-size: 85px;
+  text-shadow: 3px 5px 2px #474747, 1px 14px 5px rgba(206, 89, 55, 0.19);
+}
+
+.subheading {
+  font-family: 'Poiret One', cursive;
+  color: #fff;
+  font-size: 28px;
+  text-shadow: 3px 5px 2px #474747, 1px 14px 5px rgba(206, 89, 55, 0.19);
+}
+
+.wrapper {
+  width: 90%;
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+
+.section-left {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 5px;
+  padding: 45px;
+  margin-right: 30px;
+}
+
+.gallery {
+  width: 90%;
+  display: flex;
+}
+
+.image-top {
+  height: 430px;
+  margin-right: 10px;
+}
+
+
+.image {
+  height: 140px;
+  margin-right: 10px;
+}
+
+.title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-family: 'Poiret One', cursive;
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.description {
+  margin-bottom: 50px;
+  font-size: 20px;
+  font-family: 'Manrope', sans-serif;
+}
+
+.information-container {
+  margin-bottom: 30px;
+}
+
+.text {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.text span {
+  font-size: 24px;
+  color: #6956E5;
+  font-weight: bold;
+  font-family: 'Poiret One', cursive;
+  text-shadow: 1px 0 0 currentColor;
+}
+
+.name-restaurant {
+  font-family: 'Manrope', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.title-gallery {
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: bold;
+}
+
+.section-right {
+  width: 30%;
+  display: flex;
+  background: #fff;
+  flex-direction: column;
+  padding: 45px 65px;
+}
+
+.maps {
+  margin-bottom: 20px;
+}
+
+.decorated-link {
+  text-underline-offset: 4px;
+  color: inherit;
+  text-decoration-color: #6956E5;
+  text-decoration-thickness: 1px;
+}
+
+.social-media {
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.inform-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: 'Manrope', sans-serif;
+
+}
+
+.logo-social-media {
+  height: 80px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.logo-phone {
+  margin-right: 15px;
+}
+
+.logo-address {
+  height: 25px;
+  margin-right: 25px;
+}
+
+.schedule {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.logo-schedule {
+  margin-right: 15px;
+}
+
