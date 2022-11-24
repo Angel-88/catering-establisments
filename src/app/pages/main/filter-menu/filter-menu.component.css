@@ -11,6 +11,7 @@
   margin-bottom: 10px;
   margin-left: 20px;
   color: #6956E5;
+  text-shadow: 0 0 currentColor;
 }
 
 .wrapper-filter {

@@ -11,6 +11,20 @@
       </mat-checkbox>
     </section>
   </div>
+
+  <div class="wrapper-filter">
+    <div class="title">Страви</div>
+    <section
+      class="section-filter"
+      *ngFor="let dish of dishes">
+      <mat-checkbox
+        class="mat-checkbox"
+        color="primary">
+        {{dish.name}}
+      </mat-checkbox>
+    </section>
+  </div>
+
   <div class="wrapper-filter">
     <div class="title">Кухня</div>
     <section
@@ -23,6 +37,7 @@
       </mat-checkbox>
     </section>
   </div>
+
   <div class="wrapper-filter">
     <div class="title">Послуги</div>
     <section
@@ -35,17 +50,5 @@
       </mat-checkbox>
     </section>
   </div>
-<!--  <div class="wrapper-filter">-->
-<!--    <div class="title">Додатково</div>-->
-<!--    <section-->
-<!--      class="section-filter"-->
-<!--      *ngFor="let item of filters">-->
-<!--      <mat-checkbox-->
-<!--        class="mat-checkbox"-->
-<!--        color="primary">-->
-<!--        {{item.filter}}-->
-<!--      </mat-checkbox>-->
-<!--    </section>-->
-<!--  </div>-->
 </div>
 

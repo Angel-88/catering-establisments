@@ -5,6 +5,7 @@ const typeRouter = require('./routers/type.routers');
 const establishmentRouter = require('./routers/establishment.routers');
 const cuisineRouter = require('./routers/cuisine.routers');
 const phoneRouter = require('./routers/phone.routers');
+const dishRouter = require('./routers/dish.routers');
 const PORT = process.env.PORT || 8080;
 
 const app = express();
@@ -15,6 +16,7 @@ app.use('/api', typeRouter);
 app.use('/api', establishmentRouter);
 app.use('/api', cuisineRouter);
 app.use('/api', phoneRouter);
+app.use('/api', dishRouter);
 let whitelist = ['http://localhost:4200'];
 app.use(cors(
   {

@@ -1,0 +1,279 @@
+<h1 mat-dialog-title>Додавання закладу</h1>
+<div mat-dialog-content>
+  <form
+    [formGroup]="newEstablishmentForm"
+    class="w-100 m-auto">
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        formControlName="name"
+        placeholder="Назва закладу"
+        class="w-100"
+        autocomplete="off"
+        type="text">
+
+      <button
+        *ngIf="newEstablishmentForm.get('name').value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="newEstablishmentForm.get('name').patchValue(''); $event.stopPropagation();">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        formControlName="information"
+        placeholder="Інформація про заклад"
+        type="text"
+        autocomplete="off"
+        class="w-100">
+
+      <button
+        *ngIf="newEstablishmentForm.get('information').value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="newEstablishmentForm.get('information').patchValue(''); $event.stopPropagation();">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        formControlName="phone"
+        placeholder="Номери телефонів закладу (якщо декілька, введіть через кому)"
+        class="w-100"
+        autocomplete="off"
+        type="tel">
+
+      <button
+        *ngIf="newEstablishmentForm.get('phone').value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="newEstablishmentForm.get('phone').patchValue(''); $event.stopPropagation();">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        formControlName="instagram"
+        placeholder="Instagram"
+        class="w-100"
+        autocomplete="off"
+        type="url">
+
+      <button
+        *ngIf="newEstablishmentForm.get('instagram').value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="newEstablishmentForm.get('instagram').patchValue(''); $event.stopPropagation();">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        formControlName="facebook"
+        placeholder="Facebook"
+        class="w-100"
+        autocomplete="off"
+        type="url">
+
+      <button
+        *ngIf="newEstablishmentForm.get('facebook').value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="newEstablishmentForm.get('facebook').patchValue(''); $event.stopPropagation();">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        formControlName="addressGeo"
+        placeholder="Геолокація із Google maps"
+        class="w-100"
+        autocomplete="off"
+        type="text">
+
+      <button
+        *ngIf="newEstablishmentForm.get('addressGeo').value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="newEstablishmentForm.get('addressGeo').patchValue(''); $event.stopPropagation();">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        formControlName="addressGeoTitle"
+        placeholder="Адреса закладу"
+        class="w-100"
+        autocomplete="off"
+        type="text">
+
+      <button
+        *ngIf="newEstablishmentForm.get('addressGeoTitle').value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="newEstablishmentForm.get('addressGeoTitle').patchValue(''); $event.stopPropagation();">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        formControlName="addressIframe"
+        placeholder="Iframe із Google maps (для інтерактивної карти на сайті)"
+        class="w-100"
+        autocomplete="off"
+        type="text">
+
+      <button
+        *ngIf="newEstablishmentForm.get('addressIframe').value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="newEstablishmentForm.get('addressIframe').patchValue(''); $event.stopPropagation();">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-select
+        formControlName="types"
+        placeholder="Типи закладу (ресторан, кафе і т.д.)"
+        multiple
+        class="w-100">
+        <mat-option
+          *ngFor="let type of [{id: 1, name: 'type1'}]"
+          [value]="type.id">
+          {{ type.name }}
+        </mat-option>
+      </mat-select>
+
+      <button
+        *ngIf="newEstablishmentForm.get('types').value?.length"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="newEstablishmentForm.get('types').patchValue(null); $event.stopPropagation();">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-select
+        formControlName="cuisines"
+        placeholder="Види кухонь (японська, європейська і т.д.)"
+        multiple
+        class="w-100">
+        <mat-option
+          *ngFor="let cuisine of [{id: 1, name: 'cuisines1'}]"
+          [value]="cuisine.id">
+          {{ cuisine.name }}
+        </mat-option>
+      </mat-select>
+
+      <button
+        *ngIf="newEstablishmentForm.get('cuisines').value?.length"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="newEstablishmentForm.get('cuisines').patchValue(null); $event.stopPropagation();">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-select
+        formControlName="services"
+        placeholder="Послуги (бронювання, літня тераса і т.д.)"
+        multiple
+        class="w-100">
+        <mat-option
+          *ngFor="let service of [{id: 1, name: 'service1'}]"
+          [value]="service.id">
+          {{ service.name }}
+        </mat-option>
+      </mat-select>
+
+      <button
+        *ngIf="newEstablishmentForm.get('services').value?.length"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="newEstablishmentForm.get('services').patchValue(null); $event.stopPropagation();">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-select
+        formControlName="dishes"
+        placeholder="Страви (риба, суші і т.д.)"
+        multiple
+        class="w-100">
+        <mat-option
+          *ngFor="let dish of [{id: 1, name: 'dish1'}]"
+          [value]="dish.id">
+          {{ dish.name }}
+        </mat-option>
+      </mat-select>
+
+      <button
+        *ngIf="newEstablishmentForm.get('dishes').value?.length"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="newEstablishmentForm.get('dishes').patchValue(null); $event.stopPropagation();">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div class="w-100 pb-3">
+      <button
+        class="w-50"
+        mat-raised-button
+        color="primary"
+        (click)="openScheduleDialog()">
+        Графік роботи закладу
+      </button>
+    </div>
+  </form>
+</div>
+
+<div
+  mat-dialog-actions
+  align="end">
+  <button
+    mat-button
+    color="primary"
+    [mat-dialog-close]="false">
+    Відмінити
+  </button>
+
+  <button
+    mat-button
+    color="accent"
+    [mat-dialog-close]="newEstablishmentForm.getRawValue()"
+    [disabled]="newEstablishmentForm.invalid">
+    Додати
+  </button>
+</div>

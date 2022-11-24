@@ -1,0 +1,200 @@
+<h1 mat-dialog-title>Графік роботи закладу</h1>
+<div mat-dialog-content>
+  <form
+    [formGroup]="scheduleForm"
+    class="w-100 m-auto">
+    <div class="w-100 d-flex align-items-end">
+      <mat-label
+        class="day-label me-4">
+        Понеділок:
+      </mat-label>
+
+      <mat-form-field class="me-3 w-100">
+        <input
+          matInput
+          formControlName="mondayStartTime"
+          placeholder="Початок роботи"
+          autocomplete="off"
+          type="time">
+      </mat-form-field>
+
+      <mat-form-field class="me-3 w-100">
+        <input
+          matInput
+          formControlName="mondayEndTime"
+          placeholder="Кінець роботи"
+          autocomplete="off"
+          type="time">
+      </mat-form-field>
+    </div>
+
+    <div class="w-100 d-flex align-items-end">
+      <mat-label
+        class="day-label me-4">
+        Вівторок: {{scheduleForm.get('tuesdayStartTime').value}}
+      </mat-label>
+
+      <mat-form-field class="me-3 w-100">
+        <input
+          matInput
+          formControlName="tuesdayStartTime"
+          placeholder="Початок роботи"
+          autocomplete="off"
+          type="time">
+      </mat-form-field>
+
+      <mat-form-field class="me-3 w-100">
+        <input
+          matInput
+          formControlName="tuesdayEndTime"
+          placeholder="Кінець роботи"
+          autocomplete="off"
+          type="time">
+      </mat-form-field>
+    </div>
+
+    <div class="w-100 d-flex align-items-end">
+      <mat-label
+        class="day-label me-4">
+        Середа:
+      </mat-label>
+
+      <mat-form-field class="me-3 w-100">
+        <input
+          matInput
+          formControlName="tuesdayStartTime"
+          placeholder="Початок роботи"
+          autocomplete="off"
+          type="time">
+      </mat-form-field>
+
+      <mat-form-field class="me-3 w-100">
+        <input
+          matInput
+          formControlName="tuesdayEndTime"
+          placeholder="Кінець роботи"
+          autocomplete="off"
+          type="time">
+      </mat-form-field>
+    </div>
+
+    <div class="w-100 d-flex align-items-end">
+      <mat-label
+        class="day-label me-4">
+        Четверг:
+      </mat-label>
+
+      <mat-form-field class="me-3 w-100">
+        <input
+          matInput
+          formControlName="tuesdayStartTime"
+          placeholder="Початок роботи"
+          autocomplete="off"
+          type="time">
+      </mat-form-field>
+
+      <mat-form-field class="me-3 w-100">
+        <input
+          matInput
+          formControlName="tuesdayEndTime"
+          placeholder="Кінець роботи"
+          autocomplete="off"
+          type="time">
+      </mat-form-field>
+    </div>
+
+    <div class="w-100 d-flex align-items-end">
+      <mat-label
+        class="day-label me-4">
+        П'ятниця:
+      </mat-label>
+
+      <mat-form-field class="me-3 w-100">
+        <input
+          matInput
+          formControlName="tuesdayStartTime"
+          placeholder="Початок роботи"
+          autocomplete="off"
+          type="time">
+      </mat-form-field>
+
+      <mat-form-field class="me-3 w-100">
+        <input
+          matInput
+          formControlName="tuesdayEndTime"
+          placeholder="Кінець роботи"
+          autocomplete="off"
+          type="time">
+      </mat-form-field>
+    </div>
+
+    <div class="w-100 d-flex align-items-end">
+      <mat-label
+        class="day-label me-4">
+        Субота:
+      </mat-label>
+
+      <mat-form-field class="me-3 w-100">
+        <input
+          matInput
+          formControlName="tuesdayStartTime"
+          placeholder="Початок роботи"
+          autocomplete="off"
+          type="time">
+      </mat-form-field>
+
+      <mat-form-field class="me-3 w-100">
+        <input
+          matInput
+          formControlName="tuesdayEndTime"
+          placeholder="Кінець роботи"
+          autocomplete="off"
+          type="time">
+      </mat-form-field>
+    </div>
+
+    <div class="w-100 d-flex align-items-end">
+      <mat-label
+        class="day-label me-4">
+        Неділя:
+      </mat-label>
+
+      <mat-form-field class="me-3 w-100">
+        <input
+          matInput
+          formControlName="tuesdayStartTime"
+          placeholder="Початок роботи"
+          autocomplete="off"
+          type="time">
+      </mat-form-field>
+
+      <mat-form-field class="me-3 w-100">
+        <input
+          matInput
+          formControlName="tuesdayEndTime"
+          placeholder="Кінець роботи"
+          autocomplete="off"
+          type="time">
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+
+<div
+  mat-dialog-actions
+  align="end">
+  <button
+    mat-button
+    color="primary"
+    [mat-dialog-close]="false">
+    Відмінити
+  </button>
+
+  <button
+    mat-button
+    color="accent"
+    [mat-dialog-close]="scheduleForm.getRawValue()"
+    [disabled]="scheduleForm.invalid">
+    Зберегти
+  </button>
+</div>

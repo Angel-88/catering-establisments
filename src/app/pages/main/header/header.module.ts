@@ -15,5 +15,4 @@ import { NavbarModule } from './navbar/navbar.module';
   declarations: [HeaderComponent],
   providers: [],
 })
-export class HeaderModule {
-}
+export class HeaderModule {}

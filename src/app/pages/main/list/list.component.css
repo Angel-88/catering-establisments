@@ -70,6 +70,8 @@
   font-size: 20px;
   color: #6956E5;
   cursor: pointer;
+  text-shadow: 0 0 currentColor;
+  text-decoration: none;
 }
 
 

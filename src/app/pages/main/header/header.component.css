@@ -55,12 +55,13 @@
 }
 
 .search-input {
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #6956E5;
   box-shadow: 1px 14px 5px rgba(206, 89, 55, 0.19);
   border-radius: 5px;
   width: 40%;
   margin-right: 10px;
+  font-size: 20px;
 }
 
 .search-btn {

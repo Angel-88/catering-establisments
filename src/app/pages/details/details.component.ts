@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EstablishmentsService } from '../../rest/reasturants-list/establishment.service';
-import { EstablishmentDto } from '../../rest/reasturants-list/establishment.dto';
+import { EstablishmentsService } from '../../rest/establishments/establishment.service';
+import { EstablishmentDto } from '../../rest/establishments/establishment.dto';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

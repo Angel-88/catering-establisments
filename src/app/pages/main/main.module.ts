@@ -1,12 +1,10 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
-import {CommonModule} from "@angular/common";
+import { CommonModule } from "@angular/common";
 import { MainComponent } from './main.component';
 import { FilterMenuModule } from './filter-menu/filter-menu.module';
 import { ListModule } from './list/list.module';
 import { HeaderModule } from './header/header.module';
-import { FormAddEstablishmentModule }
-  from '../../shared/components/form-add-establishment/form-add-establishment.module';
 
 @NgModule({
   imports: [
@@ -14,13 +12,11 @@ import { FormAddEstablishmentModule }
     FilterMenuModule,
     ListModule,
     HeaderModule,
-    FormAddEstablishmentModule,
   ],
   exports: [
-    MainComponent
+    MainComponent,
   ],
-  declarations: [MainComponent],
+  declarations: [ MainComponent ],
   providers: [],
 })
-export class MainModule {
-}
+export class MainModule {}

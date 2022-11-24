@@ -1,15 +1,14 @@
 import {NgModule} from '@angular/core';
 
-import {FormAddEstablishmentComponent} from "./form-add-establishment.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCommonModule, MatNativeDateModule} from "@angular/material/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {MatSelectModule} from "@angular/material/select";
 import {CommonModule} from "@angular/common";
-import {MatDatepickerModule} from "@angular/material/datepicker";
+import { MatIconModule } from '@angular/material/icon';
+import { ScheduleDialogComponent } from './schedule-dialog.component';
 
 @NgModule({
   imports:
@@ -20,14 +19,12 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
       ReactiveFormsModule,
       MatFormFieldModule,
       MatInputModule,
-      MatSelectModule,
       CommonModule,
-      MatDatepickerModule,
       MatNativeDateModule,
       FormsModule,
+      MatIconModule,
     ],
-  exports: [FormAddEstablishmentComponent],
-  declarations: [FormAddEstablishmentComponent],
+  exports: [ScheduleDialogComponent],
+  declarations: [ScheduleDialogComponent],
 })
-export class FormAddEstablishmentModule {
-}
+export class ScheduleDialogModule {}

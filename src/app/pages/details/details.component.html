@@ -63,7 +63,7 @@
       <div class="maps">
         <div class="inform-title">Карта:</div>
                   <iframe
-                    [src]="establishment.establishmentMap | safe"
+                    [src]="establishment.address.iframe | safe"
                     width="400"
                     height="250"
                     style="border:0;"
@@ -95,7 +95,7 @@
           <a
             class="decorated-link"
             target="_blank"
-            href="{{establishment.address}}">{{establishment.addressTitle}}</a>
+            [href]="establishment.address.geo">{{establishment.address.geoTitle}}</a>
         </div>
       </div>
       <div class="social-media">
