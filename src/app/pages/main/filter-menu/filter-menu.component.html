@@ -1,51 +1,100 @@
 <div class="filter-menu">
   <div class="wrapper-filter">
-    <div class="title">Тип закладу</div>
-    <section
-      class="section-filter"
-      *ngFor="let type of types">
-      <mat-checkbox
-        class="mat-checkbox"
-        color="primary">
-        {{type.name}}
-      </mat-checkbox>
-    </section>
+    <div class="title-group">
+      <div class="title">
+        Час роботи
+      </div>
+      <mat-icon
+        class="expandMore">
+        expand_more
+      </mat-icon>
+    </div>
+
+      <section
+        class="section-filter">
+        <mat-checkbox
+          class="mat-checkbox"
+          color="primary"
+          [checked]="mainService.isOpenNowChecked"
+          (change)="onOpenNowCheckboxChanged($event)">
+          Зараз відкрито
+        </mat-checkbox>
+      </section>
   </div>
 
   <div class="wrapper-filter">
-    <div class="title">Страви</div>
+    <div class="title-group">
+      <div class="title">
+        Тип закладу
+      </div>
+      <mat-icon
+        class="expandMore">
+        expand_more
+      </mat-icon>
+    </div>
+
+      <section
+        class="section-filter"
+        *ngFor="let type of types | async">
+        <mat-checkbox
+          class="mat-checkbox"
+          color="primary"
+          (change)="onTypeCheckboxChanged($event, type.id)">
+          {{type.name}}
+        </mat-checkbox>
+      </section>
+  </div>
+
+
+  <div class="wrapper-filter">
+    <div class="title-group">
+      <div class="title">Страви</div>
+      <mat-icon class="expand-more">expand_more</mat-icon>
+    </div>
+
     <section
       class="section-filter"
-      *ngFor="let dish of dishes">
+      *ngFor="let dish of dishes | async">
       <mat-checkbox
         class="mat-checkbox"
-        color="primary">
+        color="primary"
+        (change)="onDishCheckboxChanged($event, dish.id)">
         {{dish.name}}
       </mat-checkbox>
     </section>
   </div>
 
   <div class="wrapper-filter">
-    <div class="title">Кухня</div>
+    <div class="title-group">
+      <div class="title">Кухня</div>
+      <mat-icon class="expand-more">expand_more</mat-icon>
+    </div>
+
     <section
       class="section-filter"
-      *ngFor="let cuisine of cuisines">
+      *ngFor="let cuisine of cuisines | async">
       <mat-checkbox
         class="mat-checkbox"
-        color="primary">
+        color="primary"
+        (change)="onCuisineCheckboxChanged($event, cuisine.id)">
         {{cuisine.name}}
       </mat-checkbox>
     </section>
   </div>
 
   <div class="wrapper-filter">
-    <div class="title">Послуги</div>
+    <div class="title-group">
+      <div class="title">Послуги</div>
+      <mat-icon class="expand-more">expand_more</mat-icon>
+    </div>
+
     <section
       class="section-filter"
-      *ngFor="let service of services">
+      *ngFor="let service of services | async">
       <mat-checkbox
         class="mat-checkbox"
-        color="primary">
+        color="primary"
+        (change)="onServicesCheckboxChanged($event, service.id)">
         {{service.name}}
       </mat-checkbox>
     </section>

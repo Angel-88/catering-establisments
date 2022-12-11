@@ -1,4 +1,7 @@
 <div class="details-wrapper">
+  <img
+    class="background"
+    src="../../../assets/images_establishments/{{establishment.id}}_1.jpg">
   <div class="header-wrapper">
     <div class="navbar">
       <div
@@ -16,14 +19,16 @@
         </div>
       </div>
       <div class="nav-wrapper">
-        <a class="nav-text">Бронювання</a>
+        <a
+          class="nav-text"
+          href="tel:{{establishment.phones[0]}}">Бронювання</a>
         <button class="nav-button">Додати заклад</button>
       </div>
     </div>
   </div>
   <div class="heading-wrapper">
     <div class="heading">{{establishment?.name}}</div>
-    <div class="subheading">Кафе</div>
+    <div class="subheading">{{establishment?.types?.join(', ')}}</div>
   </div>
 </div>
 
@@ -34,128 +39,171 @@
     <div class="section-left">
       <div class="description">
         <div class="information-container">
-          <div class="text"><span>Тип закладу: </span>Кафе</div>
-          <div class="text"><span>Кухня: </span>Американська, Європейська, Мексиканська</div>
-          <div class="text"><span>Послуги: </span>Парковка, Доставка, Літня тераса</div>
+          <div class="text"><span>Тип закладу: </span>{{establishment?.types?.join(', ')}}</div>
+          <div class="text"><span>Страви: </span>{{establishment?.dishes?.join(', ')}}</div>
+          <div class="text"><span>Кухня: </span>{{establishment?.cuisines?.join(', ')}}</div>
+          <div class="text"><span>Послуги: </span>{{establishment?.services?.join(', ')}}</div>
         </div>
-        <span class="name-restaurant">{{establishment.name}} - </span>
-        {{establishment.information}}
+        <span class="name-restaurant">{{establishment?.name}} - </span>
+        {{establishment?.information}}
       </div>
       <div class="title-gallery">Фотографії</div>
       <div class="gallery">
-        <img
-          class="image-top"
-          src="../../../assets/images_establishments/1_2.jpg">
-        <div>
+        <div class="image-left-wrapper">
+          <img
+            class="image-top"
+            src="../../../assets/images_establishments/{{establishment.id}}_2.jpg">
+        </div>
+        <div class="image-right-wrapper">
           <img
             class="image"
-            src="../../../assets/images_establishments/1_3.jpg">
+            src="../../../assets/images_establishments/{{establishment.id}}_3.jpg">
           <img
             class="image"
-            src="../../../assets/images_establishments/1_4.jpg">
+            src="../../../assets/images_establishments/{{establishment.id}}_4.jpg">
           <img
             class="image"
-            src="../../../assets/images_establishments/1_5.jpg">
+            src="../../../assets/images_establishments/{{establishment.id}}_5.jpg">
         </div>
       </div>
     </div>
     <div class="section-right">
-      <div class="maps">
+
+      <div
+        *ngIf="establishment?.address?.iframe"
+        class="maps">
         <div class="inform-title">Карта:</div>
-                  <iframe
-                    [src]="establishment.address.iframe | safe"
-                    width="400"
-                    height="250"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe
+          [src]="establishment?.address?.iframe | safe"
+          width="400"
+          height="250"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
       <div class="phone-wrapper">
         <div class="inform-title">
           Контакти:
         </div>
-        <div class="container">
-          <img
-            class="logo-phone"
-            src="../../../assets/icons/icons8-громкость-звонка-hand-drawn-32.png">
-          <a
-            class="decorated-link"
-            href="tel:+380733501150">+380 73 350 1150</a>
+        <div class="info-container flex-column align-items-start">
+          <div
+            *ngFor="let phone of establishment?.phones">
+            <img
+              class="logo-phone"
+              src="../../../assets/icons/icons8-телефон-35.png">
+            <a
+              class="decorated-link"
+              href="tel:{{phone}}">{{phone}}
+            </a>
+          </div>
         </div>
       </div>
-      <div class="information">
+      <div
+        *ngIf="establishment?.address?.geo"
+        class="information">
         <div class="inform-title">
           Геолокація:
         </div>
-        <div class="container">
+        <div class="info-container">
           <img
             class="logo-address"
             src="../../../assets/icons/icons8-геозона-50.png">
           <a
             class="decorated-link"
             target="_blank"
-            [href]="establishment.address.geo">{{establishment.address.geoTitle}}</a>
+            [href]="establishment?.address?.geo">{{establishment?.address?.geoTitle}}</a>
         </div>
       </div>
       <div class="social-media">
         <div class="inform-title">Соціальні мережі:</div>
         <div>
-          <img
-            class="logo-social-media"
-            src="../../../assets/icons/icons8-instagram-hand-drawn-96.png"
-            alt="social network"/>
-          <img
-            class="logo-social-media"
-            src="../../../assets/icons/icons8-facebook-hand-drawn-96.png"
-            alt="social network"/>
+          <a
+            target="_blank"
+            [href]="establishment?.instagram">
+            <img
+              class="logo-social-media"
+              src="../../../assets/icons/icons8-instagram-96.png"
+              alt="social network"/>
+          </a>
+
+          <a
+            target="_blank"
+            [href]="establishment?.facebook">
+            <img
+              class="logo-social-media"
+              src="../../../assets/icons/icons8-facebook-96.png"
+              alt="social network"/>
+          </a>
         </div>
       </div>
-      <div class="inform-title">
+      <div class="inform-title schedule-title">
         Графік роботи:
       </div>
       <div class="schedule-wrapper">
         <div class="schedule">
-          <img
-            class="logo-schedule"
-            src="../../../assets/icons/icons8-monday-cute-outline-32.png">
-          10:00 - 22:00
+          <span class="day-of-the-week">Пн: </span>
+          <div
+            *ngIf="establishment?.schedule?.monday"
+            class="time-wrapper">
+            {{ '2022-11-24T' + establishment.schedule?.monday?.startTime | date : 'HH:mm' }}
+            - {{ '2022-11-24T' + establishment.schedule?.monday?.endTime | date : 'HH:mm' }}
+          </div>
         </div>
         <div class="schedule">
-          <img
-            class="logo-schedule"
-            src="../../../assets/icons/icons8-tuesday-cute-outline-32.png">
-          10:00 - 22:00
+          <span class="day-of-the-week">Вт: </span>
+          <div
+            *ngIf="establishment?.schedule?.tuesday"
+            class="time-wrapper">
+            {{ '2022-11-24T' + establishment.schedule?.tuesday?.startTime | date : 'HH:mm' }}
+            - {{ '2022-11-24T' + establishment.schedule?.tuesday?.endTime | date : 'HH:mm' }}
+          </div>
         </div>
         <div class="schedule">
-          <img
-            class="logo-schedule"
-            src="../../../assets/icons/icons8-wednesday-cute-outline-32.png">
-          10:00 - 22:00
+          <span class="day-of-the-week">Ср: </span>
+          <div
+            *ngIf="establishment?.schedule?.wednesday"
+            class="time-wrapper">
+            {{ '2022-11-24T' + establishment.schedule?.wednesday?.startTime | date : 'HH:mm' }}
+            - {{ '2022-11-24T' + establishment.schedule?.wednesday?.endTime | date : 'HH:mm' }}
+          </div>
         </div>
         <div class="schedule">
-          <img
-            class="logo-schedule"
-            src="../../../assets/icons/icons8-thursday-32.png">
-          10:00 - 22:00
+          <span class="day-of-the-week">Чт: </span>
+          <div
+            *ngIf="establishment?.schedule?.thursday"
+            class="time-wrapper">
+            {{ '2022-11-24T' + establishment.schedule?.thursday?.startTime | date : 'HH:mm' }}
+            - {{ '2022-11-24T' + establishment.schedule?.thursday?.endTime | date : 'HH:mm' }}
+          </div>
         </div>
         <div class="schedule">
-          <img
-            class="logo-schedule"
-            src="../../../assets/icons/icons8-friday-cute-outline-32.png">
-          10:00 - 22:00
+          <span class="day-of-the-week">Пт: </span>
+          <div
+            *ngIf="establishment?.schedule?.friday"
+            class="time-wrapper">
+            {{ '2022-11-24T' + establishment.schedule?.friday?.startTime | date : 'HH:mm' }}
+            - {{ '2022-11-24T' + establishment.schedule?.friday?.endTime | date : 'HH:mm' }}
+          </div>
         </div>
         <div class="schedule">
-          <img
-            class="logo-schedule"
-            src="../../../assets/icons/icons8-saturday-cute-outline-32.png">
-          10:00 - 22:00
+          <span class="day-of-the-week">Сб: </span>
+          <div
+            *ngIf="establishment?.schedule?.saturday"
+            class="time-wrapper">
+            {{ '2022-11-24T' + establishment.schedule?.saturday?.startTime | date : 'HH:mm' }}
+            - {{ '2022-11-24T' + establishment.schedule?.saturday?.endTime | date : 'HH:mm' }}
+          </div>
         </div>
         <div class="schedule">
-          <img
-            class="logo-schedule"
-            src="../../../assets/icons/icons8-sunday-cute-outline-32.png">
-          10:00 - 22:00
+          <span class="day-of-the-week">Нд: </span>
+          <div
+            *ngIf="establishment?.schedule?.sunday"
+            class="time-wrapper">
+            {{ '2022-11-24T' + establishment.schedule?.sunday?.startTime | date : 'HH:mm' }}
+            - {{ '2022-11-24T' + establishment.schedule?.sunday?.endTime | date : 'HH:mm' }}
+          </div>
         </div>
       </div>
     </div>

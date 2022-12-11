@@ -4,11 +4,14 @@ export class EstablishmentDto {
   information!: string;
   address!: Address;
   schedule: ScheduleDto;
-  socialNetwork!: string;
-  image: string;
+  instagram: string;
+  facebook: string;
+  image?: string;
   types: string[];
-  cuisines?: string[];
+  cuisines: string[];
   services: string[];
+  dishes: string[];
+  phones: string[];
 
   constructor(data?: EstablishmentDto) {
     if (data) Object.assign(this, data);
@@ -17,7 +20,7 @@ export class EstablishmentDto {
 
 export interface Address {
   geo: string;
-  geoTitle: string
+  geoTitle: string;
   iframe: string;
 }
 
@@ -32,8 +35,6 @@ export interface ScheduleDto {
 }
 
 export interface DayDto {
-  id?: string;
-  name: string;
   startTime: string;
   endTime: string;
 }
@@ -47,4 +48,3 @@ export enum DayEnum {
   'SATURDAY' = 'saturday',
   'SUNDAY' = 'sunday',
 }
-

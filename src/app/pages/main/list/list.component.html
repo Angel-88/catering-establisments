@@ -2,15 +2,19 @@
   <mat-card
     class="card"
     *ngFor="let establishment of establishments">
-    <div class="card-title-wrapper">
-      <img
-        mat-card-lg-image
-        class="header-image"
-        src="image"
-        alt="Photo restaurant">
+    <div class="card-wrapper">
+      <div class="img-block">
+        <img
+          mat-card-lg-image
+          class="header-image"
+          src="../../assets/images_establishments/{{establishment.id}}_1.jpg"
+          alt="Photo restaurant">
+      </div>
       <div>
         <mat-card-title-group class="card-title-group">
-          <mat-card-subtitle class="card-subtitle">type</mat-card-subtitle>
+          <mat-card-subtitle class="card-subtitle">
+            {{establishment.types.join(', ')}}
+          </mat-card-subtitle>
           <mat-card-title
             class="card-title">
             {{establishment.name}}
@@ -22,13 +26,35 @@
             <img
               class="logo-address"
               src="../../assets/icons/icons8-часы-64.png"
-              alt="logo-address">schedule</div>
-          <div class="card-content-line"
-              >
+              alt="logo-address">
+            <ng-container *ngIf="establishment.schedule?.monday?.startTime && establishment.schedule?.monday?.endTime">
+              <span
+                matTooltip="Пн: {{ '2022-11-24T' + establishment.schedule?.monday?.startTime | date : 'HH:mm' }} - {{ '2022-11-24T' + establishment.schedule?.monday?.endTime | date : 'HH:mm' }}
+Вт: {{ '2022-11-24T' + establishment.schedule?.tuesday?.startTime | date : 'HH:mm' }} - {{ '2022-11-24T' + establishment.schedule?.tuesday?.endTime | date : 'HH:mm' }}
+Ср: {{ '2022-11-24T' + establishment.schedule?.wednesday?.startTime | date : 'HH:mm' }} - {{ '2022-11-24T' + establishment.schedule?.wednesday?.endTime | date : 'HH:mm' }}
+Чт: {{ '2022-11-24T' + establishment.schedule?.thursday?.startTime | date : 'HH:mm' }} - {{ '2022-11-24T' + establishment.schedule?.thursday?.endTime | date : 'HH:mm' }}
+Пт: {{ '2022-11-24T' + establishment.schedule?.friday?.startTime | date : 'HH:mm' }} - {{ '2022-11-24T' + establishment.schedule?.friday?.endTime | date : 'HH:mm' }}
+Сб: {{ '2022-11-24T' + establishment.schedule?.saturday?.startTime | date : 'HH:mm' }} - {{ '2022-11-24T' + establishment.schedule?.saturday?.endTime | date : 'HH:mm' }}
+Нд: {{ '2022-11-24T' + establishment.schedule?.sunday?.startTime | date : 'HH:mm' }} - {{ '2022-11-24T' + establishment.schedule?.sunday?.endTime | date : 'HH:mm' }}"
+                matTooltipClass="my-tooltip">
+                Пн: {{ '2022-11-24T' + establishment.schedule?.monday?.startTime | date : 'HH:mm' }}
+                - {{ '2022-11-24T' + establishment.schedule?.monday?.endTime | date : 'HH:mm' }} ...
+              </span>
+            </ng-container>
+
+            <ng-container *ngIf="!(establishment.schedule?.monday?.startTime && establishment.schedule?.monday?.endTime)">
+              --
+            </ng-container>
+          </div>
+
+          <div
+            class="card-content-line">
             <img
               class="logo-address"
               src="../../assets/icons/icons8-геозона-50.png"
-              alt="logo-address">{{establishment.address.geoTitle}}</div>
+              alt="logo-address">
+            {{establishment.address.geoTitle}}
+          </div>
         </mat-card-content>
       </div>
       <div class="button">

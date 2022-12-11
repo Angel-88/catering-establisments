@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EstablishmentsService } from '../../../rest/establishments/establishment.service';
+import { EstablishmentsParams, EstablishmentsService } from '../../../rest/establishments/establishment.service';
 import { EstablishmentDto } from '../../../rest/establishments/establishment.dto';
+import { MainService } from '../main.service';
 
 @Component({
   selector: 'app-list',
@@ -15,26 +16,22 @@ export class ListComponent implements OnInit {
   establishments: EstablishmentDto[] = [];
 
   constructor(
-    private establishmentService: EstablishmentsService) {
+    private readonly establishmentService: EstablishmentsService,
+    private readonly mainService: MainService,
+  ) {
   }
-
-  // establishments = [
-  //   {
-  //     title: 'Nice 2 meet U',
-  //     subtitle: 'Кафе',
-  //     image: '../../../assets/icons/1_1.jpg',
-  //     workSchedule: [ '10:00-21:00' ],
-  //     address: [ 'Хрещатик, 256' ],
-  //   }]
-
 
   ngOnInit(): void {
     this.initEstablishments();
+
+    this.mainService.establishmentsParamsChanged$.subscribe(establishmentsParams => {
+      this.initEstablishments(establishmentsParams);
+    });
   }
 
-  private initEstablishments(): void {
-    this.establishmentService.getEstablishments().subscribe(establishments => {
+  private initEstablishments(establishmentsParams?: EstablishmentsParams): void {
+    this.establishmentService.getEstablishments(establishmentsParams).subscribe(establishments => {
       this.establishments = establishments;
-    })
+    });
   }
 }

@@ -1,19 +1,31 @@
-<script src="header.module.ts"></script>
-<div class="header-container">
+<div id="header" class="header-container">
   <app-navbar></app-navbar>
   <div class="heading-wrapper">
     <div class="heading">Заклади харчування міста Черкаси</div>
     <div class="subheading">Тут ви зможете знайти заклад до душі</div>
   </div>
   <div class="search-wrapper">
-    <input
-      type="text"
-      class="search-input"
-      placeholder="">
-    <button
-      type="button"
-      class="search-btn">Пошук
-    </button>
+    <div
+      class="search-input-wrapper">
+      <input
+        type="text"
+        class="search-input pe-5"
+        (keydown.enter)="onSearchNameChanged()"
+        (ngModelChange)="onEstablishmentSearchChanged()"
+        placeholder="Пошук заклада харчування..."
+        [(ngModel)]="name">
+      <button
+        *ngIf="name"
+        class="search-clear-btn"
+        aria-label="Clear"
+        (click)="name=''; onEstablishmentSearchChanged()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <!--    <button-->
+    <!--      type="button"-->
+    <!--      class="search-btn">Пошук-->
+    <!--    </button>-->
   </div>
 </div>
 

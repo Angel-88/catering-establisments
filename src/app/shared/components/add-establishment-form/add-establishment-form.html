@@ -162,7 +162,7 @@
         multiple
         class="w-100">
         <mat-option
-          *ngFor="let type of [{id: 1, name: 'type1'}]"
+          *ngFor="let type of types | async"
           [value]="type.id">
           {{ type.name }}
         </mat-option>
@@ -185,7 +185,7 @@
         multiple
         class="w-100">
         <mat-option
-          *ngFor="let cuisine of [{id: 1, name: 'cuisines1'}]"
+          *ngFor="let cuisine of cuisines | async"
           [value]="cuisine.id">
           {{ cuisine.name }}
         </mat-option>
@@ -208,7 +208,7 @@
         multiple
         class="w-100">
         <mat-option
-          *ngFor="let service of [{id: 1, name: 'service1'}]"
+          *ngFor="let service of services | async"
           [value]="service.id">
           {{ service.name }}
         </mat-option>
@@ -231,7 +231,7 @@
         multiple
         class="w-100">
         <mat-option
-          *ngFor="let dish of [{id: 1, name: 'dish1'}]"
+          *ngFor="let dish of dishes | async"
           [value]="dish.id">
           {{ dish.name }}
         </mat-option>
@@ -272,8 +272,8 @@
   <button
     mat-button
     color="accent"
-    [mat-dialog-close]="newEstablishmentForm.getRawValue()"
-    [disabled]="newEstablishmentForm.invalid">
+    [disabled]="newEstablishmentForm.invalid"
+    (click)="save()">
     Додати
   </button>
 </div>

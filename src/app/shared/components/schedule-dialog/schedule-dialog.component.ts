@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { ScheduleDto } from '../../../rest/establishments/establishment.dto';
@@ -16,11 +16,9 @@ export interface DialogData {
 export class ScheduleDialogComponent implements OnInit {
   scheduleForm!: FormGroup;
 
-  schedule: ScheduleDto;
-
   constructor(
     private readonly fB: FormBuilder,
-    private readonly dialog: MatDialog,
+    private readonly dialogRef: MatDialogRef<ScheduleDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private dialogData: DialogData,
   ) {};
 
@@ -46,5 +44,41 @@ export class ScheduleDialogComponent implements OnInit {
       sundayStartTime: [ '08:00', [ Validators.required ] ],
       sundayEndTime: [ '21:00', [ Validators.required ] ],
     });
+  }
+
+  onScheduleSave() {
+    const scheduleFormValue = this.scheduleForm.getRawValue();
+    const schedule: ScheduleDto = {
+      friday: {
+        startTime: scheduleFormValue.fridayStartTime,
+        endTime: scheduleFormValue.fridayEndTime,
+      },
+      saturday: {
+        startTime: scheduleFormValue.saturdayStartTime,
+        endTime: scheduleFormValue.saturdayEndTime,
+      },
+      sunday: {
+        startTime: scheduleFormValue.sundayStartTime,
+        endTime: scheduleFormValue.sundayEndTime,
+      },
+      thursday: {
+        startTime: scheduleFormValue.thursdayStartTime,
+        endTime: scheduleFormValue.thursdayEndTime,
+      },
+      tuesday: {
+        startTime: scheduleFormValue.tuesdayStartTime,
+        endTime: scheduleFormValue.tuesdayEndTime,
+      },
+      wednesday: {
+        startTime: scheduleFormValue.wednesdayStartTime,
+        endTime: scheduleFormValue.wednesdayEndTime,
+      },
+      monday: {
+        startTime: scheduleFormValue.mondayStartTime,
+        endTime: scheduleFormValue.mondayEndTime,
+      },
+    };
+
+    this.dialogRef.close(schedule);
   }
 }

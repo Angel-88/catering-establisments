@@ -8,6 +8,7 @@ import { MainModule } from './pages/main/main.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BaseInterceptor } from './rest/interceptors/base-interceptor';
 import { FooterModule } from './shared/components/footer/footer.module';
+import { SharedDataModule } from './core/services/shared-data/shared-data.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FooterModule } from './shared/components/footer/footer.module';
     MainModule,
     HttpClientModule,
     FooterModule,
+    SharedDataModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true },

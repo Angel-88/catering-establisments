@@ -13,9 +13,18 @@
       </div>
     </div>
     <div class="wrapper">
-      <a class="nav-text">Поруч зі мною</a>
-      <a class="nav-text">Зараз відкрито</a>
-      <button class="nav-button" (click)="addCateringEstablishment()">Додати заклад</button>
+      <button
+        class="nav-button"
+        [class.text-decoration-underline]="mainService.isOpenNowChecked"
+        (click)="onOpenNowEmitted()">
+        Зараз відкрито
+      </button>
+
+      <button
+        class="nav-button"
+        (click)="addCateringEstablishment()">
+        Додати заклад
+      </button>
     </div>
   </div>
 </header>

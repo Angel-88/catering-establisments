@@ -1,26 +1,43 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 
 import { map, Observable } from "rxjs";
 import { EstablishmentDto } from './establishment.dto';
 
+export interface EstablishmentsParams {
+  name?: string;
+  typeIds?: string[];
+  dishIds?: string[];
+  cuisineIds?: string[];
+  serviceIds?: string[];
+  openNow?: boolean;
+}
+
 @Injectable()
 export class EstablishmentsService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
-  getEstablishments(): Observable<EstablishmentDto[]> {
-    // let params = { id, name, information, address_title, address, establishment_map};
-    return this.http.get<EstablishmentDto[]>('/api/establishments').pipe(
+  getEstablishments(establishmentsParams?: EstablishmentsParams): Observable<EstablishmentDto[]> {
+    let params = {};
+
+    if (establishmentsParams) {
+      for (let [ key, value ] of Object.entries(establishmentsParams)) {
+        if (!!key && (Array.isArray(value) && value.length || !Array.isArray(value) && !!value)) {
+          params[key] = value;
+        }
+      }
+    }
+
+    console.log(params);
+
+    return this.http.get<EstablishmentDto[]>('/api/establishments', { params }).pipe(
       map(establishments => establishments.map(establishment => new EstablishmentDto(establishment))),
     );
-
   }
 
   getEstablishment(id: string): Observable<EstablishmentDto> {
-    // let params = { id, name, information, address_title, address, establishment_map};
-    return this.http.get<EstablishmentDto>(`/api/establishment/${ id }`);
+    return this.http.get<EstablishmentDto>(`/api/establishments/${ id }`);
 
   }
 

@@ -11,3 +11,8 @@ body {
   width: 100%;
 }
 
+.my-tooltip {
+  font-size: 20px;
+  white-space: pre-line;
+  padding: 1rem 2rem !important;
+}

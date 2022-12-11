@@ -8,9 +8,13 @@ import { ServiceDto } from '../../../rest/services/service.dto';
 import { ServicesService } from '../../../rest/services/service.service';
 import { DishDto } from '../../../rest/dishes/dish.dto';
 import { DishesService } from '../../../rest/dishes/dish.service';
+import { SharedDataService } from '../../../core/services/shared-data/shared-data.service';
+import { Observable } from 'rxjs';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MainService } from '../main.service';
 
 @Component({
-  selector: 'app-filter',
+  selector: 'app-filter-menu',
   templateUrl: './filter-menu.component.html',
   styleUrls: [ './filter-menu.component.css' ],
   providers: [
@@ -20,54 +24,75 @@ import { DishesService } from '../../../rest/dishes/dish.service';
     DishesService,
   ],
 })
-
 export class FilterMenuComponent implements OnInit {
+  types: Observable<TypeDto[]>;
+  cuisines: Observable<CuisineDto[]>;
+  services: Observable<ServiceDto[]>;
+  dishes: Observable<DishDto[]>;
 
-  types: TypeDto[] = [];
-  cuisines: CuisineDto[] = [];
-  services: ServiceDto[] = [];
-  dishes: DishDto[] = [];
+  checkedTypesIds: Set<string> = new Set();
+  checkedDishesIds: Set<string> = new Set();
+  checkedCuisinesIds: Set<string> = new Set();
+  checkedServicesIds: Set<string> = new Set();
 
   constructor(
-    private typeService: TypesService,
-    private cuisineService: CuisinesService,
-    private serviceService: ServicesService,
-    private dishService: DishesService,
-    public http: HttpClient,
+    private readonly sharedDataService: SharedDataService,
+    public mainService: MainService,
   ) {}
 
   ngOnInit(): void {
-    this.initTypes();
-    this.initCuisines();
-    this.initServices();
-    this.initDishes();
+    this.initSharedDataObservables();
   }
 
-  private initTypes(): void {
-    this.typeService.getTypes().subscribe(types => {
-        this.types = types;
-      },
-    );
+  onTypeCheckboxChanged($event: MatCheckboxChange, id: string) {
+    if ($event.checked) {
+      this.checkedTypesIds.add(id);
+    } else {
+      this.checkedTypesIds.delete(id);
+    }
+
+    this.mainService.onEstablishmentsParamsChanged({ typeIds: [ ...this.checkedTypesIds ] });
   }
 
-  private initCuisines(): void {
-    this.cuisineService.getCuisines().subscribe(cuisines => {
-        this.cuisines = cuisines;
-      },
-    );
+  onDishCheckboxChanged($event: MatCheckboxChange, id: string) {
+    if ($event.checked) {
+      this.checkedDishesIds.add(id);
+    } else {
+      this.checkedDishesIds.delete(id);
+    }
+
+    this.mainService.onEstablishmentsParamsChanged({ dishIds: [ ...this.checkedDishesIds ] });
   }
 
-  private initServices(): void {
-    this.serviceService.getServices().subscribe(services => {
-        this.services = services;
-      },
-    );
+  onCuisineCheckboxChanged($event: MatCheckboxChange, id: string) {
+    if ($event.checked) {
+      this.checkedCuisinesIds.add(id);
+    } else {
+      this.checkedCuisinesIds.delete(id);
+    }
+
+    this.mainService.onEstablishmentsParamsChanged({ cuisineIds: [ ...this.checkedCuisinesIds ] });
   }
 
-  private initDishes(): void {
-    this.dishService.getDishes().subscribe(dishes => {
-        this.dishes = dishes;
-      },
-    );
+  onServicesCheckboxChanged($event: MatCheckboxChange, id: string) {
+    if ($event.checked) {
+      this.checkedServicesIds.add(id);
+    } else {
+      this.checkedServicesIds.delete(id);
+    }
+
+    this.mainService.onEstablishmentsParamsChanged({ serviceIds: [ ...this.checkedServicesIds ] });
+  }
+
+  onOpenNowCheckboxChanged($event: MatCheckboxChange) {
+    this.mainService.isOpenNowChecked = $event.checked;
+    this.mainService.onEstablishmentsParamsChanged({ openNow: this.mainService.isOpenNowChecked });
+  }
+
+  private initSharedDataObservables(): void {
+    this.types = this.sharedDataService.getTypesObservable();
+    this.services = this.sharedDataService.getServicesObservable();
+    this.cuisines = this.sharedDataService.getCuisinesObservable();
+    this.dishes = this.sharedDataService.getDishesObservable();
   }
 }

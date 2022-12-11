@@ -2,10 +2,18 @@
   width: 100%;
   height: 700px;
   margin-bottom: 50px;
-  background: url(../../../assets/images_establishments/1_1.jpg) center no-repeat;
+  background: center center;
   background-size: cover;
   position: relative;
   box-shadow: 0 10px 14px 0 rgba(34, 60, 80, 0.3);
+}
+
+.background {
+  max-height: 700px;
+  width: 100%;
+  position: absolute;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
 
 .details-wrapper:after {
@@ -15,7 +23,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
@@ -24,7 +32,7 @@
   height: 80px;
   box-shadow: 0 10px 14px 0 rgba(34, 60, 80, 0.3);
   align-items: center;
-  background-color: rgba(0,0,0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(3px);
   position: absolute;
   padding-top: 10px;
@@ -135,23 +143,38 @@
   background: #fff;
   border-radius: 5px;
   padding: 45px;
-  margin-right: 30px;
 }
 
 .gallery {
-  width: 90%;
+  width: 100%;
   display: flex;
+  max-width: 100%;
+  justify-content: space-between;
+}
+
+.image-left-wrapper {
+  width: 73%;
+}
+
+.image-right-wrapper {
+  width: 25%;
 }
 
 .image-top {
-  height: 430px;
+  width: 100%;
+  height: 460px;
   margin-right: 10px;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
 
 
 .image {
-  height: 140px;
-  margin-right: 10px;
+  width: 100%;
+  height: 150px;
+  margin-bottom: 5px;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
 
 .title {
@@ -218,6 +241,10 @@
   margin-bottom: 20px;
 }
 
+.maps iframe {
+  max-width: 100%;
+}
+
 .decorated-link {
   text-underline-offset: 4px;
   color: inherit;
@@ -242,14 +269,13 @@
   font-weight: bold;
   margin-bottom: 10px;
   font-family: 'Manrope', sans-serif;
-
 }
 
 .logo-social-media {
   height: 80px;
 }
 
-.container {
+.info-container {
   display: flex;
   align-items: center;
 }
@@ -272,12 +298,90 @@
 
 .schedule {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.day-of-the-week {
+  color: #6956E5;
+  font-size: 24px;
+  font-family: 'Manrope', sans-serif;
+  line-height: 1;
+}
+
+.time-wrapper {
+  line-height: 1;
   font-size: 20px;
-  margin-bottom: 5px;
 }
 
-.logo-schedule {
-  margin-right: 15px;
+@media screen and (max-width: 1440px) {
+  .section-left {
+    width: 60%;
+    padding: 45px;
+  }
+
+  .section-right {
+    width: 35%;
+    padding: 45px 65px;
+  }
 }
 
+@media screen and (max-width: 1150px) {
+  .section-left {
+    width: 60%;
+    padding: 25px;
+  }
+
+  .section-right {
+    width: 35%;
+    padding: 25px;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .section-left {
+    width: 100%;
+    padding: 25px;
+  }
+
+  .section-right {
+    width: 100%;
+    padding: 25px;
+  }
+
+  .phone-wrapper {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .inform-title {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+  .schedule-title {
+    margin-bottom: 10px;
+  }
+
+  .logo-phone {
+    display: none;
+  }
+
+  .logo-address {
+    display: none;
+  }
+
+  .information {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .social-media {
+    flex-direction: row;
+    align-items: center;
+  }
+}

@@ -3,7 +3,7 @@
   width: 95%;
   height: 30%;
   margin: 0 auto;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .filter-wrapper {
@@ -11,11 +11,69 @@
   background: #fff;
   height: 100%;
   border-radius: 5px;
-  padding-top: 10px;
-  margin-right: 10px;
+  box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
 }
 
 .list-wrapper {
-  width: 70%;
+  width: 75%;
   height: 100%;
+}
+
+@media screen and (max-width: 1280px) {
+  .filter-wrapper {
+    width: 27%;
+  }
+
+  .list-wrapper {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .filter-wrapper {
+    width: 30%;
+  }
+
+  .list-wrapper {
+    width: 68%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .filter-wrapper {
+    width: 33%;
+  }
+
+  .list-wrapper {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .filter-wrapper {
+    display: none;
+  }
+
+  .list-wrapper {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+}
+
+@media screen and (max-width: 425px) {
+  .wrapper {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .filter-wrapper {
+    width: 100%;
+    background-color: revert;
+  }
+
+  .list-wrapper {
+    width: 100%;
+  }
 }

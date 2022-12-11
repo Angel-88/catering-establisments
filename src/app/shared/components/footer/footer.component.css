@@ -1,8 +1,25 @@
 .footer-wrapper {
   margin-top: 50px;
   background-color: #474e6d;
-  height: 250px;
-  box-shadow: 10px 0  14px 0 rgba(34, 60, 80, 0.3);
+  height: 100px;
+  width: 100%;
+  box-shadow: 10px 0 14px 0 rgba(34, 60, 80, 0.3);
   color: #fff;
+  backdrop-filter: blur(3px);
+  position: relative;
+  z-index: 2;
+  font-size: 22px;
+}
+
+.text-logo {
+  position: absolute;
+  color: #ffffff;
+  font-family: 'Comfortaa', cursive;
+  z-index: 3;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
 }
 

@@ -5,6 +5,7 @@ import { MainComponent } from './main.component';
 import { FilterMenuModule } from './filter-menu/filter-menu.module';
 import { ListModule } from './list/list.module';
 import { HeaderModule } from './header/header.module';
+import { MainService } from './main.service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { HeaderModule } from './header/header.module';
     MainComponent,
   ],
   declarations: [ MainComponent ],
-  providers: [],
+  providers: [MainService],
 })
 export class MainModule {}

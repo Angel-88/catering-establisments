@@ -3,18 +3,19 @@ header {
   height: 100px;
   box-shadow: 0 10px 14px 0 rgba(34, 60, 80, 0.3);
   align-items: center;
-  background-color: rgba(0,0,0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(3px);
   position: absolute;
   z-index: 2;
+  font-size: 24px;
 }
 
 .navbar {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   width: 95%;
   margin: 0 auto;
-  padding: 5px;
   align-items: center;
 }
 
@@ -35,7 +36,6 @@ header {
   display: flex;
   flex-direction: column;
   color: #ffffff;
-  font-size: 24px;
   font-family: 'Comfortaa', cursive;
   z-index: 3;
 }
@@ -44,7 +44,6 @@ header {
   margin-right: 35px;
   text-decoration: none;
   color: #ffffff;
-  font-size: 24px;
   font-family: 'Comfortaa', cursive;
   z-index: 3;
   cursor: pointer;
@@ -64,59 +63,43 @@ header {
   border: none;
   background: none;
   text-align: center;
-  font-size: 24px;
-  padding: 10px 15px;
   color: #fff;
   font-family: 'Comfortaa', cursive;
   z-index: 2;
   cursor: pointer;
+  margin-left: 50px;
 }
 
-/*navbar {*/
-/*  width: 100%;*/
-/*  height: 100px;*/
-/*  background-color: #fff;*/
-/*  box-shadow: 0 10px 14px 0 rgba(34, 60, 80, 0.3);*/
-/*  margin-bottom: 50px;*/
-/*}*/
+@media screen and (max-width: 960px) {
+  header {
+    height: 90px;
+    font-size: 20px;
+  }
 
-/*.navbar {*/
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-/*  width: 95%;*/
-/*  margin: 0 auto;*/
-/*  padding: 10px;*/
-/*}*/
+  .logo {
+    height: 75px;
+  }
+}
 
-/*.logo-wrapper{*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*}*/
+@media screen and (max-width: 960px) {
+  .nav-text {
+    text-align: end;
+    line-height: 1;
+  }
 
-/*.logo {*/
-/*  border-radius: 5px;*/
-/*  height: 55px;*/
-/*}*/
+  .nav-button {
+    line-height: 1;
+    text-align: end;
+  }
+}
 
-/*.text-logo {*/
-/*  color: #6956E5;*/
-/*  font-size: 28px;*/
-/*  font-family: 'Comfortaa', cursive;*/
-/*}*/
+@media screen and (max-width:425px) {
+  header {
+    height: 55px;
+    font-size: 14px;
+  }
 
-/*.wrapper {*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*}*/
-
-/*.button {*/
-/*  text-decoration: none;*/
-/*  border: none;*/
-/*  text-align: center;*/
-/*  font-size: 26px;*/
-/*  border-radius: 5px;*/
-/*  padding: 10px 15px;*/
-/*  color: #6956E5;*/
-/*  background:none;*/
-/*  font-family: 'Comfortaa', cursive;*/
-/*}*/
+  .logo {
+    height: 35px;
+  }
+}
