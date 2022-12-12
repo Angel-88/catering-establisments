@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/material/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { CuisineDto } from 'src/app/rest/cuisines/cuisine.dto';
@@ -12,12 +11,7 @@ import { DishDto } from '../../../rest/dishes/dish.dto';
 import { ScheduleDialogComponent } from '../schedule-dialog/schedule-dialog.component';
 import { SharedDataService } from '../../../core/services/shared-data/shared-data.service';
 
-export interface DialogData {
-  // types: TypeDto[];
-  // cuisines: CuisineDto[];
-  // services: ServiceDto[];
-  // dishes: DishDto[];
-}
+export interface DialogData {}
 
 @Component({
   templateUrl: './add-establishment-form.html',
@@ -30,6 +24,10 @@ export class AddEstablishmentFormComponent implements OnInit {
   cuisines: Observable<CuisineDto[]>;
   services: Observable<ServiceDto[]>;
   dishes: Observable<DishDto[]>;
+
+  listImage: File;
+  detailsMainImage: File;
+  detailsImages: FileList | [] = [];
 
   schedule: ScheduleDto = {
     [DayEnum.MONDAY]: { startTime: '08:00', endTime: '21:00' },
@@ -67,8 +65,19 @@ export class AddEstablishmentFormComponent implements OnInit {
       .pipe(filter(Boolean))
       .subscribe((schedule: ScheduleDto) => {
         this.schedule = schedule;
-        console.log(this.schedule);
       });
+  }
+
+  processListImageFile(listImageInput: HTMLInputElement) {
+    this.listImage = listImageInput.files[0];
+  }
+
+  processMainImageFile(mainImageInput: HTMLInputElement) {
+    this.detailsMainImage = mainImageInput.files[0];
+  }
+
+  processImagesFiles(imagesInput: HTMLInputElement) {
+    this.detailsImages = imagesInput.files;
   }
 
   save() {
@@ -85,6 +94,10 @@ export class AddEstablishmentFormComponent implements OnInit {
       services: formValue.services,
       types: formValue.types,
       cuisines: formValue.cuisines,
+
+      listImage: this.listImage,
+      detailsMainImage: this.detailsMainImage,
+      detailsImages: this.detailsImages,
     });
     this.matDialogRef.close(establishment);
   }

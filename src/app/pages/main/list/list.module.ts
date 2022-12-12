@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { PipesModule } from '../../../shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     AppRoutingModule,
     RouterModule,
     MatTooltipModule,
+    PipesModule,
   ],
   exports: [
     ListComponent,

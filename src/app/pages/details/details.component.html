@@ -1,7 +1,7 @@
 <div class="details-wrapper">
   <img
     class="background"
-    src="../../../assets/images_establishments/{{establishment.id}}_1.jpg">
+    [src]="establishment?.listImage">
   <div class="header-wrapper">
     <div class="navbar">
       <div
@@ -18,7 +18,9 @@
           </div>
         </div>
       </div>
-      <div class="nav-wrapper">
+      <div
+        *ngIf="establishment?.phones"
+        class="nav-wrapper">
         <a
           class="nav-text"
           href="tel:{{establishment.phones[0]}}">Бронювання</a>
@@ -52,18 +54,17 @@
         <div class="image-left-wrapper">
           <img
             class="image-top"
-            src="../../../assets/images_establishments/{{establishment.id}}_2.jpg">
+            [src]="establishment?.detailsMainImage | safe">
         </div>
         <div class="image-right-wrapper">
-          <img
-            class="image"
-            src="../../../assets/images_establishments/{{establishment.id}}_3.jpg">
-          <img
-            class="image"
-            src="../../../assets/images_establishments/{{establishment.id}}_4.jpg">
-          <img
-            class="image"
-            src="../../../assets/images_establishments/{{establishment.id}}_5.jpg">
+          <ng-container *ngIf="establishment?.detailsImages?.length">
+            <ng-container *ngFor="let image of establishment?.detailsImages; index as idx">
+              <img
+                *ngIf="idx < 3"
+                class="image"
+                [src]="image | safe">
+            </ng-container>
+          </ng-container>
         </div>
       </div>
     </div>

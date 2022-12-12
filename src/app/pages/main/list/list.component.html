@@ -7,7 +7,7 @@
         <img
           mat-card-lg-image
           class="header-image"
-          src="../../assets/images_establishments/{{establishment.id}}_1.jpg"
+          [src]="establishment?.listImage | safe"
           alt="Photo restaurant">
       </div>
       <div>
@@ -59,7 +59,7 @@
       </div>
       <div class="button">
         <a
-          [routerLink]="['/details', establishment.id]"
+          [routerLink]="['/details', establishment?.id]"
           class="btn-open">Деталі</a>
       </div>
     </div>

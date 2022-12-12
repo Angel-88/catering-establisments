@@ -1,7 +1,7 @@
 export class EstablishmentDto {
   id?: string;
-  name!: string;
-  information!: string;
+  name: string;
+  information: string;
   address!: Address;
   schedule: ScheduleDto;
   instagram: string;
@@ -12,6 +12,13 @@ export class EstablishmentDto {
   services: string[];
   dishes: string[];
   phones: string[];
+  listImageName?: string;
+  detailsMainImageName?: string;
+  detailsImagesNames?: string[];
+
+  listImage?: any;
+  detailsMainImage?: any;
+  detailsImages?;
 
   constructor(data?: EstablishmentDto) {
     if (data) Object.assign(this, data);

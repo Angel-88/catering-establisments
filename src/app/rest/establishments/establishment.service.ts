@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 
 import { map, Observable } from "rxjs";
 import { EstablishmentDto } from './establishment.dto';
@@ -16,7 +16,7 @@ export interface EstablishmentsParams {
 @Injectable()
 export class EstablishmentsService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   getEstablishments(establishmentsParams?: EstablishmentsParams): Observable<EstablishmentDto[]> {
     let params = {};
@@ -28,8 +28,6 @@ export class EstablishmentsService {
         }
       }
     }
-
-    console.log(params);
 
     return this.http.get<EstablishmentDto[]>('/api/establishments', { params }).pipe(
       map(establishments => establishments.map(establishment => new EstablishmentDto(establishment))),

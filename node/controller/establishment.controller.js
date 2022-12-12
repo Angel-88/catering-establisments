@@ -38,14 +38,18 @@ class EstablishmentController {
       instagram,
       facebook,
       address,
-      schedule
+      schedule,
+      listImageName,
+      detailsMainImageName,
+      detailsImagesNames,
     } = req.body;
 
-    const newEstablishment = await db.query(`INSERT INTO establishments (name, information, address_geo_title, address_geo, address_iframe)
-                                             values ($1, $2, $3, $4, $5) RETURNING *`,
-      [name, information, address.geoTitle, address.geo, address.iframe]);
-
-    //RETURNING  id, name, information, address_geo_title as addressGeoTitle, address_geo as addressGeo, address_iframe as addressIframe
+    const newEstablishment = await db.query(`INSERT INTO establishments (name, information, address_geo_title,
+                                                                         address_geo, address_iframe, list_image,
+                                                                         details_main_image, details_images)
+                                             values ('${name}', '${information}', '${address.geoTitle}',
+                                                     '${address.geo}', '${address.iframe}', '${listImageName}',
+                                                     '${detailsMainImageName}', '{${detailsImagesNames}}') RETURNING *`);
 
     if (cuisines.length) {
       for (const cuisine of cuisines) {
@@ -190,6 +194,9 @@ class EstablishmentController {
       schedule: EstablishmentController.getSchedule(res.schedule),
       instagram: res.instagram,
       facebook: res.facebook,
+      listImageName: res.listImage,
+      detailsMainImageName: res.detailsMainImage,
+      detailsImagesNames: res.detailsImages,
     }));
 
     res.json(result);
@@ -219,6 +226,9 @@ class EstablishmentController {
       schedule: EstablishmentController.getSchedule(res.schedule),
       instagram: res.instagram,
       facebook: res.facebook,
+      listImageName: res.listImage,
+      detailsMainImageName: res.detailsMainImage,
+      detailsImagesNames: res.detailsImages,
     }));
 
     res.json(result[0]);
